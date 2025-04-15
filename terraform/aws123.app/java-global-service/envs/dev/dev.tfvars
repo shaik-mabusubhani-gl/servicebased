@@ -1,9 +1,30 @@
-env           = "dev"
-ami_id        = "ami-00a929b66ed6e0de6"
-instance_type = "t2.micro"
-subnet_id     = "subnet-0123456789abcdef0"
-bucket_name   = "dev-terraform-bucket"
-username      = "admin"
-password      = "DevSecret123!"
-domain_name   = "dev.example.com"
-vpc_id        = "vpc-0abcdef1234567890"
+# VPC
+vpc_name              = "java-app-service-1-dev-vpc"
+vpc_cidr              = "10.10.0.0/16"
+enable_dns_hostnames = true
+enable_dns_support   = true
+
+# Subnets
+public_subnet_cidrs  = ["10.10.1.0/24", "10.10.2.0/24"]
+private_subnet_cidrs = ["10.10.3.0/24", "10.10.4.0/24"]
+
+# AZ Mapping
+availability_zones = ["us-east-1a", "us-east-1b"]
+
+# NAT & IGW
+enable_nat_gateway      = true
+single_nat_gateway      = true
+enable_internet_gateway = true
+
+# NACL
+enable_nacl = true
+
+# Tags
+environment   = "dev"
+project       = "java-app-service-1"
+owner         = "dev-team"
+cost_center   = "DEV-1234"
+
+# Optional VPC flow logs (for monitoring)
+enable_vpc_flow_logs         = false
+vpc_flow_log_destination_arn = ""
